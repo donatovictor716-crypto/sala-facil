@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4338ca"><meta name="description" content="Organize tarefas escolares e seus estudos com o Sala Fácil.">
+<title>Sala Fácil — tarefas e estudos</title><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="brand-icon">✦</span> Sala Fácil</a><span class="tag">Seu espaço de estudos</span></header>
+<main class="container">
+<section class="welcome"><div><p class="eyebrow">ORGANIZE • ESTUDE • CONCLUA</p><h1>Olá! Vamos organizar seus estudos.</h1><p class="muted">Acompanhe suas atividades escolares em um só lugar.</p></div><div class="welcome-art" aria-hidden="true">📚</div></section>
+<section class="stats" aria-label="Resumo das tarefas">
+<article class="stat-card"><span class="stat-icon">📝</span><span class="stat-label">Total de tarefas</span><strong id="total-count">0</strong></article>
+<article class="stat-card"><span class="stat-icon">⏳</span><span class="stat-label">Pendentes</span><strong id="pending-count">0</strong></article>
+<article class="stat-card"><span class="stat-icon">✅</span><span class="stat-label">Concluídas</span><strong id="done-count">0</strong></article></section>
+<nav class="tabs" aria-label="Seções"><button class="tab active" data-tab="tasks-panel">📋 Minhas tarefas</button><button class="tab" data-tab="study-panel">💡 Auxiliar de estudos</button></nav>
+<section id="tasks-panel" class="panel"><div class="section-heading"><div><h2>Minhas tarefas</h2><p class="muted">Adicione atividades e acompanhe seus prazos.</p></div></div>
+<form id="task-form" class="task-form"><div class="field full"><label for="task-title">Nome da atividade</label><input id="task-title" name="title" maxlength="120" placeholder="Ex.: Exercícios de matemática" required></div>
+<div class="field"><label for="task-subject">Matéria</label><select id="task-subject" name="subject"><option>Matemática</option><option>Português</option><option>História</option><option>Geografia</option><option>Ciências</option><option>Inglês</option><option>Arte</option><option>Educação Física</option><option>Outra</option></select></div>
+<div class="field"><label for="task-due">Prazo (opcional)</label><input id="task-due" name="due" type="date"></div>
+<div class="field full"><label for="task-notes">Observações (opcional)</label><textarea id="task-notes" name="notes" rows="2" maxlength="500" placeholder="Página, exercícios ou lembretes..."></textarea></div><button class="primary full" type="submit">＋ Adicionar tarefa</button></form>
+<div class="list-toolbar"><label class="sr-only" for="task-filter">Filtrar tarefas</label><select id="task-filter"><option value="all">Todas as tarefas</option><option value="pending">Pendentes</option><option value="done">Concluídas</option></select><span id="task-summary" class="muted small">Nenhuma tarefa cadastrada</span></div>
+<div id="task-list" class="task-list"></div><div id="empty-state" class="empty-state"><span>🗂️</span><h3>Seu painel está livre!</h3><p>Adicione sua primeira tarefa usando o formulário acima.</p></div></section>
+<section id="study-panel" class="panel hidden"><div class="section-heading"><div><h2>Auxiliar de estudos</h2><p class="muted">Organize uma questão e registre como chegou à resposta.</p></div></div>
+<div class="notice">Este recurso guarda a questão e suas anotações no navegador. Não usa IA nem envia respostas para plataformas escolares.</div>
+<form id="study-form" class="study-form"><div class="field full"><label for="question-subject">Matéria</label><select id="question-subject"><option>Matemática</option><option>Português</option><option>História</option><option>Geografia</option><option>Ciências</option><option>Inglês</option><option>Outra</option></select></div>
+<div class="field full"><label for="question-text">Enunciado da questão</label><textarea id="question-text" rows="4" maxlength="3000" placeholder="Cole ou escreva a questão aqui..." required></textarea></div>
+<div class="field full"><label for="answer-text">Minha tentativa / resposta</label><textarea id="answer-text" rows="4" maxlength="3000" placeholder="Escreva sua resposta, cálculos ou dúvidas..."></textarea></div><button class="primary full" type="submit">Salvar no meu caderno</button></form>
+<div class="section-heading saved-heading"><h2>Meu caderno</h2><button id="clear-notes" class="text-button" type="button">Apagar caderno</button></div><div id="notes-list" class="notes-list"></div><div id="notes-empty" class="empty-state"><span>📓</span><h3>Nenhuma questão salva</h3><p>Suas anotações aparecerão aqui.</p></div></section>
+<footer><p>Feito para ajudar na organização dos estudos. Seus dados ficam neste navegador.</p><button id="export-data" class="text-button" type="button">Exportar meus dados</button></footer>
+</main><div id="toast" class="toast" role="status" aria-live="polite"></div></body></html>
